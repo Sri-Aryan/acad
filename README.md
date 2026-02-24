@@ -9,7 +9,7 @@
 <img width="330" alt="Screenshot_20260224_170641" src="https://github.com/user-attachments/assets/cb8aa1c8-0d2a-4318-bf98-a00c21bd34f6" />
 
 
-
+<img width="330" alt="Screenshot_20260224_175330" src="https://github.com/user-attachments/assets/dc9fa83a-7254-4f8c-87ce-272edede366c" />
 
 ## Weak points
 
