@@ -80,15 +80,6 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
       leading: const Icon(Icons.menu, color: Color(0xFF111827)),
       title: Row(
         children: [
-          Container(
-            padding: const EdgeInsets.all(6),
-            decoration: BoxDecoration(
-              color: const Color(0xFF007AFF),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: const Icon(Icons.bar_chart_rounded, color: Colors.white, size: 20),
-          ),
-          const SizedBox(width: 12),
           Text(
             'ANALYSIS',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(letterSpacing: 1.2),
