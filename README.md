@@ -1,16 +1,9 @@
 # acad
 
-A new Flutter project.
+<img width="430"  alt="Screenshot_20260224_170607" src="https://github.com/user-attachments/assets/ceb3212f-be55-48da-8357-78badef1a1d2" />
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+<img width="430"  alt="Screenshot_20260224_170628" src="https://github.com/user-attachments/assets/ed9e1078-80d1-477d-a03b-5e537706b991" />
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img width="430" alt="Screenshot_20260224_170641" src="https://github.com/user-attachments/assets/cb8aa1c8-0d2a-4318-bf98-a00c21bd34f6" />
