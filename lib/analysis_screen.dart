@@ -67,6 +67,16 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
             const SizedBox(height: 32),
             _buildTwoColumnPlayerLists(context),
             const SizedBox(height: 20),
+            _buildPerformanceInsightsRow(context),
+            //const SizedBox(height: 32),
+
+            //const SizedBox(height: 16),
+            //_buildSkillsGapCard(context),
+            const SizedBox(height: 32),
+            _buildRecommendationsRow(context),
+            const SizedBox(height: 20),
+            _buildAllPlayersSection(context),
+            const SizedBox(height: 40),
           ],
         ),
       ),
@@ -178,6 +188,246 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
         color: isActive ? const Color(0xFF111827) : const Color(0xFF9CA3AF),
         fontWeight: FontWeight.bold,
         fontSize: 16,
+      ),
+    );
+  }
+  Widget _buildAllPlayersSection(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('All Players', style: Theme.of(context).textTheme.titleLarge),
+            Text('10 players', style: Theme.of(context).textTheme.bodyMedium),
+          ],
+        ),
+        const SizedBox(height: 16),
+        Row(
+          children: [
+            Expanded(
+              child: Container(
+                height: 44,
+                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8), border: Border.all(color: const Color(0xFFE5E7EB))),
+                child: const TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Search',
+                    prefixIcon: Icon(Icons.search, color: Color(0xFF9CA3AF)),
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.only(top: 10),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(width: 12),
+            OutlinedButton(
+              onPressed: () {},
+              style: OutlinedButton.styleFrom(
+                foregroundColor: const Color(0xFF111827),
+                side: const BorderSide(color: Color(0xFFE5E7EB)),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                minimumSize: const Size(80, 44),
+              ),
+              child: const Text('Sort: Top'),
+            ),
+          ],
+        ),
+        const SizedBox(height: 16),
+        SizedBox(
+          height: 140, // Height for horizontal scroll list
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            clipBehavior: Clip.none,
+            children: [
+              _buildDirectoryPlayerCard(context, 'Arjun Sharma', 'Batter', '3.6', 'U-14'),
+              const SizedBox(width: 12),
+              _buildDirectoryPlayerCard(context, 'Riya Patel', 'Bowler', '3.6', 'U-14'),
+              const SizedBox(width: 12),
+              _buildDirectoryPlayerCard(context, 'Vikram Singh', 'All Rounder', '3.6', 'U-16'),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDirectoryPlayerCard(BuildContext context, String name, String role, String score, String group) {
+    return Container(
+      width: 160,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: const Color(0xFFE5E7EB)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const CircleAvatar(radius: 16, backgroundColor: Color(0xFFF3F4F6), child: Icon(Icons.person, size: 16, color: Color(0xFF9CA3AF))),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(name, style: Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 13), overflow: TextOverflow.ellipsis),
+                    Text(role, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 11)),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const Spacer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(score, style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 22)),
+              Text(group, style: Theme.of(context).textTheme.labelSmall),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildRecommendationsRow(BuildContext context) {
+    return SizedBox(
+      height: 180,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        clipBehavior: Clip.none,
+        children: [
+          _buildRecCard(context, 'Technique Block', 'Schedule bowling accuracy stations with measurable checkpoints.'),
+          const SizedBox(width: 16),
+          _buildRecCard(context, 'Conditioning', 'Introduce short repeat sprint sets for lower fitness cohorts.'),
+          const SizedBox(width: 16),
+          _buildRecCard(context, 'Strength Retention', 'Maintain batting momentum through compact reinforcement sessions.'),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildRecCard(BuildContext context, String title, String desc) {
+    return Container(
+      width: 240,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: const Color(0xFFE5E7EB)),
+        boxShadow: const [BoxShadow(color: Color.fromRGBO(0,0,0,0.02), blurRadius: 10, offset: Offset(0, 4))],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title, style: Theme.of(context).textTheme.titleMedium?.copyWith(color: const Color(0xFF007AFF))),
+                const SizedBox(height: 12),
+                Divider(height: 1,color: Color(0xFF007AFF),),
+                const SizedBox(height: 12,),
+                Text(desc, style: Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.4)),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPerformanceInsightsRow(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: _buildInsightCard(
+            context,
+            title: 'Keep Doing',
+            item1: 'Good technique',
+            score1: '10',
+            item2: 'Coachable',
+            score2: '10',
+            barColor: const Color(0xFF007AFF), // Brand primary
+          ),
+        ),
+        const SizedBox(width: 16),
+        Expanded(
+          child: _buildInsightCard(
+            context,
+            title: 'Focus Areas',
+            item1: 'Consistency',
+            score1: '10',
+            item2: 'Match temp.',
+            score2: '10',
+            barColor: const Color(0xFF111827), // Dark grey/black for contrast
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildInsightCard(BuildContext context, {required String title, required String item1, required String score1, required String item2, required String score2, required Color barColor}) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(title, style: Theme.of(context).textTheme.titleMedium),
+            const SizedBox(height: 16),
+            _buildBarItem(context, item1, score1, barColor),
+            const SizedBox(height: 12),
+            _buildBarItem(context, item2, score2, barColor),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBarItem(BuildContext context, String label, String score, Color color) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(label, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 12)),
+            Text(score, style: Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 14)),
+          ],
+        ),
+        const SizedBox(height: 6),
+        Container(
+          height: 6,
+          width: double.infinity,
+          decoration: BoxDecoration(color: const Color(0xFFF3F4F6), borderRadius: BorderRadius.circular(4)),
+          child: FractionallySizedBox(
+            alignment: Alignment.centerLeft,
+            widthFactor: 0.8, // Static value for mock UI
+            child: Container(decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(4))),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSkillsGapCard(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 20.0),
+        child: Center(
+          child: Column(
+            children: [
+              const Icon(Icons.check_circle_outline, color: Color(0xFF9CA3AF), size: 40),
+              const SizedBox(height: 12),
+              Text('No major gaps found', style: Theme.of(context).textTheme.titleMedium?.copyWith(color: const Color(0xFF6B7280))),
+              const SizedBox(height: 4),
+              Text('Your academy is hitting targets.', style: Theme.of(context).textTheme.bodyMedium),
+            ],
+          ),
+        ),
       ),
     );
   }
